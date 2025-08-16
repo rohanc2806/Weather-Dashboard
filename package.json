@@ -2,6 +2,7 @@
   "name": "weather-dashboard",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://rohanc2806.github.io/Weather-Dashboard",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.7.0",
@@ -11,8 +12,8 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4",
-    "homepage": "https://rohanc2806.github.io/Weather-Dashboard"
+    "web-vitals": "^2.1.4"
+    
   },
   "scripts": {
     "start": "react-scripts start",
