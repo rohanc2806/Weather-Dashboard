@@ -1,13 +1,235 @@
+/* Modern Weather Dashboard - Global Styles */
+
+/* Import modern font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #000;
+  /* background: linear-gradient(135deg, #2e3a6c 0%, #764ba2 100%); */
+  background: linear-gradient(135deg, #272930 0%, #2a2330 100%);
+  /* --bg-primary: linear-gradient(135deg, #272930 0%, #2a2330 100%);
+  --bg-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); */
+
+  color: #fff;
+  /* overflow: hidden; */
+  overflow-y: auto;
+  line-height: 1.5;
+  height: 100%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Fira Code', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+#root {
+  min-height: 100vh;  
+  /* height: 100vh; */
+  overflow-y: auto;
+}
+
+/* Modern Link Styles */
+a {
+  color: #00d4ff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+a:hover {
+  color: #ff6b9d;
+  text-shadow: 0 0 10px currentColor;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00d4ff, #ff6b9d);
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Button and Input Reset */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Modern Selection Styles */
+::selection {
+  background: linear-gradient(135deg, #00d4ff, #ff6b9d);
+  color: #fff;
+}
+
+::-moz-selection {
+  background: linear-gradient(135deg, #00d4ff, #ff6b9d);
+  color: #fff;
+}
+
+/* Hide Scrollbars */
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+/* Modern Focus States */
+*:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+  :root {
+    --text-primary: #ffffff !important;
+    --text-secondary: #e0e0e0 !important;
+    --glass-border: rgba(255, 255, 255, 0.5) !important;
+  }
+}
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Responsive Typography */
+@media (min-width: 768px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1440px) {
+  html {
+    font-size: 19px;
+  }
+}
+
+/* Compact for short screens */
+@media (max-height: 700px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-height: 600px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Dark mode improvements */
+@media (prefers-color-scheme: dark) {
+  body {
+    color-scheme: dark;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .glass-card {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .app-title,
+  .temperature,
+  .forecast-title {
+    color: #333 !important;
+    -webkit-text-fill-color: #333 !important;
+  }
+}
+
+/* Modern Utility Classes */
+.text-gradient {
+  background: linear-gradient(135deg, #00d4ff, #ff6b9d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+}
+
+.shadow-soft {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.shadow-strong {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }

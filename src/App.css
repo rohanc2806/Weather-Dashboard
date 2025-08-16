@@ -1,38 +1,380 @@
-.App {
-  text-align: center;
+/* Modern Weather Dashboard - Fresh Design */
+:root {
+  /* Modern Color Palette */
+  /* --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --bg-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); */
+  --bg-primary: linear-gradient(135deg, #272930 0%, #2a2330 100%);
+  --bg-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --glass-primary: rgba(255, 255, 255, 0.15);
+  --glass-secondary: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --accent-cyan: #00d4ff;
+  --accent-pink: #ff6b9d;
+  --accent-yellow: #ffd93d;
+  --accent-green: #6bcf7f;
+  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.2);
+  --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+  /* Modern Spacing System */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Modern Typography */
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-base: 1rem;
+  --font-lg: 1.125rem;
+  --font-xl: 1.25rem;
+  --font-2xl: 1.5rem;
+  --font-3xl: 2rem;
+  --font-4xl: 2.5rem;
+
+  /* Border Radius */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-primary);
+  font-size: var(--font-base);
+  line-height: 1.5;
+  overflow: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* App Container */
+.app {
+  /* width: 100vw;
+  height: 100vh;
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden; */
+  width: 100vw;
+  min-height: 100vh;  
+  /* background: var(--bg-primary); */
+  position: relative;
+}
+
+/* Animated Background */
+/* .app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 107, 157, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(0, 212, 255, 0.2) 0%, transparent 50%);
+  animation: backgroundShift 20s ease-in-out infinite;
+} */
+
+/* @keyframes backgroundShift {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.05) rotate(1deg); }
+} */
+
+/* Main Container - MODERN DASHBOARD LAYOUT */
+.app-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+  padding: var(--space-lg) var(--space-md);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--space-lg);
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Header - Clean and Modern */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: ; */
+}
+
+.app-title {
+  font-size: var(--font-3xl);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.header-search {
+  flex: 1;
+  max-width: 400px;
+  margin-left: var(--space-2xl);
+}
+
+/* Main Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr auto;
+  gap: var(--space-lg);
+  height: 100%;
+}
+
+/* Large Current Weather Card */
+.main-weather-card {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  background: var(--glass-primary);
+  backdrop-filter: blur(30px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-strong);
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main-weather-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 107, 157, 0.1) 100%);
+  border-radius: var(--radius-xl);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Weather Details Sidebar */
+.details-sidebar {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+/* Forecast Bar - Full Width */
+.forecast-bar {
+  grid-row: 2 / 3;
+  grid-column: 1 / 3;
+  background: var(--glass-secondary);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Modern Glass Cards */
+.glass-card {
+  background: var(--glass-primary);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-strong);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left var(--transition-slow);
+}
+
+.glass-card:hover::before {
+  left: 100%;
+}
+
+/* Detail Cards in Sidebar */
+.detail-card {
+  background: var(--glass-secondary);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.detail-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-strong);
+}
+
+/* Error States */
+.error-message {
+  text-align: center;
+  padding: var(--space-2xl);
+  background: var(--glass-primary);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 107, 157, 0.3);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-strong);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.error-icon {
+  font-size: var(--font-4xl);
+  margin-bottom: var(--space-lg);
+}
+
+.error-message h2 {
+  font-size: var(--font-2xl);
+  margin-bottom: var(--space-md);
+  color: var(--accent-pink);
+}
+
+.error-message p {
+  font-size: var(--font-lg);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  padding: var(--space-md);
+  color: var(--text-muted);
+  font-size: var(--font-sm);
+}
+
+.app-footer a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  transition: color var(--transition-normal);
+}
+
+.app-footer a:hover {
+  color: var(--accent-pink);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto auto;
   }
-  to {
-    transform: rotate(360deg);
+
+  .main-weather-card {
+    grid-column: 1 / 2;
   }
+
+  .details-sidebar {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    grid-template-rows: none;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .forecast-bar {
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: var(--space-md);
+    gap: var(--space-md);
+  }
+
+  .app-header {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .header-search {
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .app-title {
+    font-size: var(--font-2xl);
+  }
+
+  .details-sidebar {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-height: 700px) {
+  .app-container {
+    padding: var(--space-sm);
+    gap: var(--space-sm);
+  }
+
+  .main-weather-card {
+    padding: var(--space-lg);
+  }
+
+  .detail-card {
+    padding: var(--space-md);
+  }
+}
+
+/* Hide scrollbars */
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-cyan);
+  color: #000;
+}
+
+/* Focus states */
+*:focus {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }

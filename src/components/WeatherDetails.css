@@ -1,0 +1,142 @@
+/* Modern Weather Details - Sidebar Cards */
+.weather-details {
+  display: contents; /* Let grid handle the layout */
+}
+
+.details-title {
+  display: none; /* No title needed in this design */
+}
+
+.details-grid {
+  display: contents; /* Individual cards will be placed by parent grid */
+}
+
+.detail-card {
+  /* Styling is handled by parent .detail-card class in App.css */
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  position: relative;
+  z-index: 2;
+}
+
+.detail-icon-container {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.detail-icon {
+  font-size: var(--font-2xl);
+  position: relative;
+  z-index: 2;
+}
+
+.detail-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.detail-label {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.detail-value {
+  font-size: var(--font-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+/* Gradient backgrounds for each card */
+.detail-card:nth-child(1) .detail-icon-container {
+  background: linear-gradient(135deg, var(--accent-cyan), rgba(0, 212, 255, 0.3));
+}
+
+.detail-card:nth-child(1) .detail-icon {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+.detail-card:nth-child(2) .detail-icon-container {
+  background: linear-gradient(135deg, var(--accent-green), rgba(107, 207, 127, 0.3));
+}
+
+.detail-card:nth-child(2) .detail-icon {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(107, 207, 127, 0.5);
+}
+
+.detail-card:nth-child(3) .detail-icon-container {
+  /* background: linear-gradient(135deg, var(--accent-yellow), rgba(255, 217, 61, 0.3)); */
+  background: linear-gradient(135deg, rgba(235, 189, 6, 0.3), rgba(212, 193, 114, 0.3));
+}
+
+.detail-card:nth-child(3) .detail-icon {
+  color: #333;
+  text-shadow: 0 0 10px rgba(255, 217, 61, 0.5);
+}
+
+.detail-card:nth-child(4) .detail-icon-container {
+  background: linear-gradient(135deg, var(--accent-pink), rgba(255, 107, 157, 0.3));
+}
+
+.detail-card:nth-child(4) .detail-icon {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .detail-content {
+    gap: var(--space-sm);
+  }
+
+  .detail-icon-container {
+    width: 40px;
+    height: 40px;
+  }
+
+  .detail-icon {
+    font-size: var(--font-xl);
+  }
+
+  .detail-value {
+    font-size: var(--font-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .detail-icon-container {
+    width: 35px;
+    height: 35px;
+  }
+
+  .detail-icon {
+    font-size: var(--font-lg);
+  }
+
+  .detail-value {
+    font-size: var(--font-base);
+  }
+
+  .detail-label {
+    font-size: 0.7rem;
+  }
+}
