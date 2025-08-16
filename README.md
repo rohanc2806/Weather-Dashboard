@@ -1,5 +1,7 @@
 # Weather Dashboard
 
+👉 **Live Demo:** [Click here to view](https://rohanc2806.github.io/Weather-Dashboard/)
+
 A modern, responsive weather dashboard built with React that provides real-time weather information with a sleek, glassmorphism design.
 
 ## ✨ Features
